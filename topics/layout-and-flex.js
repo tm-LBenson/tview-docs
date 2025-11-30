@@ -1,26 +1,26 @@
 export const topicLayoutAndFlex = {
   id: "layout-and-flex",
   title: "Layout and Flex",
-  render: function(container) {
+  render: function (container) {
     const headerMainFooterCode = `
-header := tview.NewTextView().
-    SetText("My App").
-    SetTextAlign(tview.AlignCenter).
-    SetBorder(true)
+header := tview.NewTextView()
+header.SetText("My App")
+header.SetTextAlign(tview.AlignCenter)
+header.SetBorder(true)
 
-mainArea := tview.NewTextView().
-    SetText("Main area").
-    SetBorder(true)
+mainArea := tview.NewTextView()
+mainArea.SetText("Main area")
+mainArea.SetBorder(true)
 
-footer := tview.NewTextView().
-    SetText("Q: quit").
-    SetBorder(true)
+footer := tview.NewTextView()
+footer.SetText("Q: quit")
+footer.SetBorder(true)
 
-root := tview.NewFlex().
-    SetDirection(tview.FlexRow).
-    AddItem(header, 3, 0, false).
-    AddItem(mainArea, 0, 1, true).
-    AddItem(footer, 1, 0, false)
+root := tview.NewFlex()
+root.SetDirection(tview.FlexRow)
+root.AddItem(header, 3, 0, false)
+root.AddItem(mainArea, 0, 1, true)
+root.AddItem(footer, 1, 0, false)
 
 if err := app.SetRoot(root, true).SetFocus(mainArea).Run(); err != nil {
     panic(err)
@@ -28,36 +28,36 @@ if err := app.SetRoot(root, true).SetFocus(mainArea).Run(); err != nil {
 `.trim();
 
     const fourPanelCode = `
-menu := tview.NewList().
-    SetBorder(true).
-    SetTitle("Menu")
+menu := tview.NewList()
+menu.SetBorder(true)
+menu.SetTitle("Menu")
 
-tableA := tview.NewTable().
-    SetBorder(true).
-    SetTitle("Table A")
+tableA := tview.NewTable()
+tableA.SetBorder(true)
+tableA.SetTitle("Table A")
 
-tableB := tview.NewTable().
-    SetBorder(true).
-    SetTitle("Table B")
+tableB := tview.NewTable()
+tableB.SetBorder(true)
+tableB.SetTitle("Table B")
 
-actions := tview.NewForm().
-    SetBorder(true).
-    SetTitle("Actions")
+actions := tview.NewForm()
+actions.SetBorder(true)
+actions.SetTitle("Actions")
 
-row1 := tview.NewFlex().
-    SetDirection(tview.FlexColumn).
-    AddItem(menu, 0, 1, true).
-    AddItem(tableA, 0, 2, false)
+row1 := tview.NewFlex()
+row1.SetDirection(tview.FlexColumn)
+row1.AddItem(menu, 0, 1, true)
+row1.AddItem(tableA, 0, 2, false)
 
-row2 := tview.NewFlex().
-    SetDirection(tview.FlexColumn).
-    AddItem(tableB, 0, 2, false).
-    AddItem(actions, 0, 2, false)
+row2 := tview.NewFlex()
+row2.SetDirection(tview.FlexColumn)
+row2.AddItem(tableB, 0, 2, false)
+row2.AddItem(actions, 0, 2, false)
 
-mainArea := tview.NewFlex().
-    SetDirection(tview.FlexRow).
-    AddItem(row1, 0, 1, true).
-    AddItem(row2, 0, 1, false)
+mainArea := tview.NewFlex()
+mainArea.SetDirection(tview.FlexRow)
+mainArea.AddItem(row1, 0, 1, true)
+mainArea.AddItem(row2, 0, 1, false)
 `.trim();
 
     container.innerHTML = `
@@ -69,7 +69,7 @@ mainArea := tview.NewFlex().
       <pre><code>${headerMainFooterCode}</code></pre>
 
       <h2>Understanding AddItem</h2>
-      <p><code>AddItem(child, fixedSize, proportion, focus)</code> controls how each child is sized.</p>
+      <p><code>AddItem(child, fixedSize, proportion, focus)</code> controls how each child is sized:</p>
       <ul>
         <li><code>fixedSize &gt; 0</code> gives the child an exact height or width depending on direction.</li>
         <li><code>fixedSize == 0</code> makes the child flexible. <code>proportion</code> controls how much of the remaining space it gets.</li>
@@ -88,12 +88,7 @@ mainArea := tview.NewFlex().
       </ul>
 
       <div class="info-box">
-        Start with a single Flex for header, main, footer. Once that feels right, replace the main area with nested Flex containers for more complex layouts.
-      </div>
-
-      <div class="info-box notes-box">
-        <div class="notes-box-title">Your notes</div>
-        <p>Capture layouts you like here. For example, favorite width ratios for menus, tables, or logs.</p>
+        Start with a single Flex for header, main, footer. Once that feels right, replace the main area with nested Flex containers for panels.
       </div>
     `;
   }
