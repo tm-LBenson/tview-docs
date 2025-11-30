@@ -2,10 +2,10 @@ export const topicPatternsAndChecklists = {
   id: "patterns-and-checklists",
   title: "Patterns and checklist",
   render: function(container) {
-    const checklist = `
+ const checklist = `
 1. Create a folder, run go mod init, and add tview and tcell.
 2. Write a minimal hello world with a single TextView and Run.
-3. Add a simple ApplyTheme function and call it in main.
+3. Add an ApplyTheme function and call it at the top of main before you create widgets.
 4. Switch to a header, main, footer Flex layout.
 5. Replace the main area with nested Flex containers for multiple panels.
 6. Add behavior with closures and local variables where needed.
@@ -13,6 +13,7 @@ export const topicPatternsAndChecklists = {
 8. When needed, introduce Pages and a function per screen.
 9. Split large sections into helper functions or files for readability.
 `.trim();
+
 
     container.innerHTML = `
       <h1>Patterns and checklist</h1>
