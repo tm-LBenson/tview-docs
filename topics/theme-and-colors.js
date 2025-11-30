@@ -1,4 +1,8 @@
-const themeCode = `
+export const topicThemeAndColors = {
+  id: "theme-and-colors",
+  title: "Theme and colors",
+  render: function (container) {
+    const themeCode = `
 import (
     "github.com/gdamore/tcell/v2"
     "github.com/rivo/tview"
@@ -32,3 +36,35 @@ func main() {
     }
 }
 `.trim();
+
+    container.innerHTML = `
+      <h1>Theme and colors</h1>
+      <p>tview uses global styles in <code>tview.Styles</code> for background, borders, titles, and graphics. You can set these once at startup to get a consistent look across widgets.</p>
+
+      <h2>Simple theme function</h2>
+      <p>Define a function that sets your colors, then call it at the top of <code>main</code> before you create your widgets.</p>
+      <pre><code>${themeCode}</code></pre>
+
+      <h2>Per widget styling</h2>
+      <p>Global styles give you a base palette. You can override colors on individual widgets when needed.</p>
+      <pre><code>header := tview.NewTextView().
+    SetText("My App").
+    SetTextAlign(tview.AlignCenter).
+    SetBorder(true).
+    SetTitle("Header").
+    SetBorderColor(tcell.NewRGBColor(0, 120, 160)).
+    SetBackgroundColor(tcell.NewRGBColor(0, 0, 0))</code></pre>
+
+      <ul>
+        <li>Use global styles for backgrounds and default border colors.</li>
+        <li>Use per widget methods for accents or special panels.</li>
+        <li>Keep values in RGB so you do not rely on named colors.</li>
+      </ul>
+
+      <div class="info-box notes-box">
+        <div class="notes-box-title">Your notes</div>
+        <p>Record your preferred RGB values here. For example, a dark theme for development and a light theme for demos.</p>
+      </div>
+    `;
+  }
+};
