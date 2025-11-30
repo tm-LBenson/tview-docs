@@ -1,53 +1,37 @@
-export const topicPatternsAndChecklists = {
-  id: "patterns-and-checklists",
+export const topicPatternsAndChecklist = {
+  id: "patterns-and-checklist",
   title: "Patterns and checklist",
-  render: function(container) {
- const checklist = `
-1. Create a folder, run go mod init, and add tview and tcell.
-2. Write a minimal hello world with a single TextView and Run.
-3. Add an ApplyTheme function and call it at the top of main before you create widgets.
-4. Switch to a header, main, footer Flex layout.
-5. Replace the main area with nested Flex containers for multiple panels.
-6. Add behavior with closures and local variables where needed.
-7. Add global keybindings using SetInputCapture.
-8. When needed, introduce Pages and a function per screen.
-9. Split large sections into helper functions or files for readability.
+  render: function (container) {
+    const checklist = `
+1. Create a new Go module and add tview and tcell.
+2. In main, create an Application and enable the mouse.
+3. Optionally set a global PrimitiveBackgroundColor.
+4. Write a function for each main section:
+   - NewHeader() returns a header primitive.
+   - NewMain() returns main content, main form, and a Flex that contains them.
+   - NewFooter() returns a footer form that can update main content or exit.
+5. Style each section locally inside its builder function.
+6. Inside sections, use Flex to arrange content (TextView, Form, tables, etc.).
+7. Build a root Flex in main that stacks header, main, and footer.
+8. Set the root on the Application and set focus to the main form.
+9. Run the app.
 `.trim();
-
 
     container.innerHTML = `
       <h1>Patterns and checklist</h1>
-      <p>This section is a quick reference you can follow each time you build a new tview app.</p>
+      <p>This checklist describes the section-based workflow for building tview apps.</p>
 
-      <h2>Standard flow for a new app</h2>
+      <h2>Standard workflow</h2>
       <pre><code>${checklist}</code></pre>
 
-      <h2>Common layout patterns</h2>
+      <h2>Design principles</h2>
       <ul>
-        <li>Header plus main plus footer with <code>FlexRow</code>.</li>
-        <li>Two columns with menu and content using <code>FlexColumn</code>.</li>
-        <li>Four panel views using nested Flex containers.</li>
-        <li>Multi screen apps using <code>Pages</code> for main and settings.</li>
+        <li>One function per main section (header, main, footer).</li>
+        <li>Each section is responsible for styling its own widgets.</li>
+        <li>Use Flex inside sections to lay out content instead of a global theme file.</li>
+        <li>Use forms for functional parts so wiring callbacks and navigation stays simple.</li>
+        <li>Keep the root layout thin: just assemble section primitives and set focus.</li>
       </ul>
-
-      <h2>When to introduce helper functions</h2>
-      <ul>
-        <li>Create one builder function per major screen when you have more than one screen.</li>
-        <li>Extract a helper when a section of layout or behavior becomes hard to read inline.</li>
-        <li>Keep simple widgets inline if they are only used once.</li>
-      </ul>
-
-      <h2>State guidance</h2>
-      <ul>
-        <li>Let widgets manage their own selection and focus by default.</li>
-        <li>Use local variables plus closures for simple app data such as modes or filters.</li>
-        <li>Introduce a struct to hold shared state only when many widgets and pages need to coordinate.</li>
-      </ul>
-
-      <div class="info-box notes-box">
-        <div class="notes-box-title">Note</div>
-        <p>Adapt this checklist to your workflow. Add reminders for logging, testing, or profiling steps you often forget.</p>
-      </div>
     `;
   }
 };
