@@ -45,7 +45,7 @@ export const topicPatternsAndChecklists = {
       </ul>
 
       <div class="info-box notes-box">
-        <div class="notes-box-title">Your notes</div>
+        <div class="notes-box-title">Note</div>
         <p>Adapt this checklist to your workflow. Add reminders for logging, testing, or profiling steps you often forget.</p>
       </div>
     `;
