@@ -66,7 +66,7 @@ header.SetBackgroundColor(tcell.NewRGBColor(0, 0, 0))
       </ul>
 
       <div class="info-box notes-box">
-        <div class="notes-box-title">Your notes</div>
+        <div class="notes-box-title">Note</div>
         <p>Record your preferred RGB values here. For example, a dark theme for development and a light theme for demos.</p>
       </div>
     `;
