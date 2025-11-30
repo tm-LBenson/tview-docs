@@ -69,7 +69,7 @@ app.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
       <p>Start with local variables and closures. Introduce a struct only when you have to coordinate many widgets or pages.</p>
 
       <div class="info-box notes-box">
-        <div class="notes-box-title">Your notes</div>
+        <div class="notes-box-title">Notes</div>
         <p>List examples of app specific state here, such as filters, selected IDs, or modes you often use.</p>
       </div>
     `;
