@@ -27,14 +27,24 @@ func main() {
 
     app := tview.NewApplication()
 
-    box := tview.NewTextView().
-        SetText("Themed tview app").
-        SetBorder(true)
+    box := tview.NewTextView()
+    box.SetText("Themed tview app")
+    box.SetBorder(true)
 
     if err := app.SetRoot(box, true).SetFocus(box).Run(); err != nil {
         panic(err)
     }
 }
+`.trim();
+
+    const headerCode = `
+header := tview.NewTextView()
+header.SetText("My App")
+header.SetTextAlign(tview.AlignCenter)
+header.SetBorder(true)
+header.SetTitle("Header")
+header.SetBorderColor(tcell.NewRGBColor(0, 120, 160))
+header.SetBackgroundColor(tcell.NewRGBColor(0, 0, 0))
 `.trim();
 
     container.innerHTML = `
@@ -47,13 +57,7 @@ func main() {
 
       <h2>Per widget styling</h2>
       <p>Global styles give you a base palette. You can override colors on individual widgets when needed.</p>
-      <pre><code>header := tview.NewTextView().
-    SetText("My App").
-    SetTextAlign(tview.AlignCenter).
-    SetBorder(true).
-    SetTitle("Header").
-    SetBorderColor(tcell.NewRGBColor(0, 120, 160)).
-    SetBackgroundColor(tcell.NewRGBColor(0, 0, 0))</code></pre>
+      <pre><code>${headerCode}</code></pre>
 
       <ul>
         <li>Use global styles for backgrounds and default border colors.</li>
